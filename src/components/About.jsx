@@ -75,7 +75,7 @@ const About = () => {
             <div className="image-container">
               {/* Replaced blob with actual photo */}
               <div className="photo-frame">
-                <img src="/profile.jpg" alt="Gaanavaditya Reddy" className="profile-photo" />
+              <img src={`${process.env.PUBLIC_URL}/profile.jpg`} alt="Gaanavaditya Reddy" className="profile-photo" />
               </div>
             </div>
           </div>
