@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const About = () => {
   const sectionRef = useRef(null);
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -10,20 +10,20 @@ const About = () => {
         if (entry.isIntersecting) {
           const content = document.querySelector('.about-content');
           const image = document.querySelector('.about-image');
-          
+
           content.classList.add('slide-in-left');
           image.classList.add('slide-in-right');
-          
+
           observer.unobserve(entry.target);
         }
       },
       { threshold: 0.1 }
     );
-    
+
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
-    
+
     return () => {
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
@@ -75,72 +75,77 @@ const About = () => {
             <div className="image-container">
               {/* Replaced blob with actual photo */}
               <div className="photo-frame">
-              <img src={`${process.env.PUBLIC_URL}/profile.jpg`} alt="Gaanavaditya Reddy" className="profile-photo" />
+                <img src={`${process.env.PUBLIC_URL}/profile.jpg`} alt="Gaanavaditya Reddy" className="profile-photo" />
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <style jsx>{`
         .about-container {
           display: flex;
           align-items: center;
           gap: 60px;
         }
-        
+
         .about-content, .about-image {
           width: 50%;
           opacity: 0;
         }
-        
+
         .about-content h3 {
           font-size: 2rem;
           margin-bottom: 20px;
           color: var(--primary);
         }
-        
+
         .about-content p {
           margin-bottom: 20px;
           font-size: 1.1rem;
         }
-        
+
         .about-info {
           margin: 30px 0;
         }
-        
+
         .info-item {
           display: flex;
           margin-bottom: 15px;
         }
-        
+
         .info-item span {
           min-width: 120px;
           font-weight: 600;
           color: var(--primary);
         }
-        
+
         .about-cta {
           display: flex;
           gap: 20px;
           margin-top: 30px;
         }
-        
+
         .about-cta i {
           margin-right: 8px;
         }
-        
+
         .image-container {
           position: relative;
           width: 100%;
-          height: 500px;
+          height: 400px;  /* Adjust height for better fit */
           display: flex;
           justify-content: center;
           align-items: center;
+          overflow: hidden;  /* Ensure image doesn't overflow */
+          margin-top: 20px;  /* Add a little margin to center the image better */
         }
-        
+
         .photo-frame {
-          width: 300px;
-          height: 500px;
+          width: 100%;
+          height: 100%;
+          max-width: 400px;  /* Set a max-width for the photo frame */
+          max-height: 400px;  /* Set a max-height to ensure it's responsive */
           border-radius: 20px;
           padding: 10px;
           background: linear-gradient(-45deg, var(--primary), var(--secondary));
@@ -151,30 +156,37 @@ const About = () => {
           justify-content: center;
           align-items: center;
         }
-        
+
         .profile-photo {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: center top;  /* Align the face to the top center */
           border-radius: 12px;
           transition: transform 0.3s ease;
         }
-        
+
         .photo-frame:hover .profile-photo {
           transform: scale(1.05);
         }
-        
+
         @media (max-width: 768px) {
           .about-container {
             flex-direction: column-reverse;
           }
-          
+
           .about-content, .about-image {
             width: 100%;
           }
-          
+
           .image-container {
             height: 300px;
+            margin-top: 10px;  /* Reduced margin for smaller screens */
+          }
+
+          .photo-frame {
+            max-width: 90%;  /* Allow the photo frame to be more flexible */
+            max-height: 300px;  /* Ensure the image doesn't get too large */
           }
         }
       `}</style>
