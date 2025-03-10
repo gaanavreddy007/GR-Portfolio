@@ -75,20 +75,28 @@ const Projects = () => {
               onMouseEnter={() => setActiveProject(index)}
               onMouseLeave={() => setActiveProject(null)}
             >
-              <div className="project-icon">
-                <i className={project.icon}></i>
-              </div>
-              <h3>{project.title}</h3>
-              <span className="project-type">{project.type}</span>
-              <p className="project-period"><i className="fas fa-calendar-alt"></i> {project.period}</p>
-              <div className={`project-details ${activeProject === index ? 'show' : ''}`}>
-                <p>{project.description}</p>
-                <div className="project-tech">
-                  {project.tech.map((tech, techIndex) => (
-                    <span key={techIndex} className="tech-tag">{tech}</span>
-                  ))}
+              <div className="project-header">
+                <div className="project-icon">
+                  <i className={project.icon}></i>
+                </div>
+                <div className="project-title-container">
+                  <h3>{project.title}</h3>
+                  <span className="project-type">{project.type}</span>
+                  <p className="project-period"><i className="fas fa-calendar-alt"></i> {project.period}</p>
                 </div>
               </div>
+              
+              <div className="project-description">
+                <p>{project.description}</p>
+              </div>
+              
+              <div className="project-tech">
+                {project.tech.map((tech, techIndex) => (
+                  <span key={techIndex} className="tech-tag">{tech}</span>
+                ))}
+              </div>
+              
+              <div className={`project-highlight ${activeProject === index ? 'show' : ''}`}></div>
             </div>
           ))}
         </div>
@@ -108,8 +116,21 @@ const Projects = () => {
           transition: var(--transition);
           position: relative;
           overflow: hidden;
-          height: 300px;
+          height: auto;
           opacity: 0;
+          display: flex;
+          flex-direction: column;
+          border: 2px solid transparent;
+        }
+        
+        .project-card.fade-in {
+          opacity: 1;
+          animation: fadeIn 0.5s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
         }
         
         .dark-theme .project-card {
@@ -119,17 +140,29 @@ const Projects = () => {
         .project-card:hover {
           transform: translateY(-10px);
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+          border-color: var(--primary);
+        }
+        
+        .project-header {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 20px;
+          gap: 15px;
+        }
+        
+        .project-title-container {
+          flex: 1;
         }
         
         .project-icon {
           width: 60px;
           height: 60px;
+          min-width: 60px;
           background: rgba(74, 108, 247, 0.1);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          margin-bottom: 20px;
         }
         
         .project-icon i {
@@ -140,6 +173,7 @@ const Projects = () => {
         .project-card h3 {
           font-size: 1.3rem;
           margin-bottom: 10px;
+          color: var(--text-primary);
         }
         
         .project-type {
@@ -149,12 +183,13 @@ const Projects = () => {
           color: var(--primary);
           border-radius: 20px;
           font-size: 0.8rem;
-          margin-bottom: 15px;
+          margin-bottom: 10px;
         }
         
         .project-period {
           font-size: 0.9rem;
-          margin-bottom: 20px;
+          margin: 0;
+          color: var(--text-secondary);
         }
         
         .project-period i {
@@ -162,38 +197,43 @@ const Projects = () => {
           color: var(--primary);
         }
         
-        .project-details {
-          position: absolute;
-          bottom: -100%;
-          left: 0;
-          width: 100%;
-          background: linear-gradient(to top, var(--primary), transparent);
-          padding: 30px;
-          border-radius: 0 0 15px 15px;
-          transition: bottom 0.3s ease;
+        .project-description {
+          margin-bottom: 20px;
+          line-height: 1.6;
         }
         
-        .project-details.show {
-          bottom: 0;
-        }
-        
-        .project-details p {
-          color: white;
-          margin-bottom: 15px;
+        .project-description p {
+          color: var(--text-secondary);
+          margin: 0;
         }
         
         .project-tech {
           display: flex;
           flex-wrap: wrap;
           gap: 10px;
+          margin-top: auto;
         }
         
         .tech-tag {
           padding: 5px 10px;
-          background: rgba(255, 255, 255, 0.2);
-          color: white;
+          background: rgba(74, 108, 247, 0.1);
+          color: var(--primary);
           border-radius: 20px;
           font-size: 0.8rem;
+        }
+        
+        .project-highlight {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 0;
+          background: var(--primary);
+          transition: height 0.3s ease;
+        }
+        
+        .project-highlight.show {
+          height: 100%;
         }
         
         @media (max-width: 992px) {
