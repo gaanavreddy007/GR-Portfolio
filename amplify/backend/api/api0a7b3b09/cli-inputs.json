@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/items": {
+      "name": "/items",
+      "lambdaFunction": "portfolioapp1674480e",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

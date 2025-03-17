@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "aws-amplify": "^6.13.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -39,6 +40,14 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "@aws-amplify/backend": "^1.14.2",
+    "@aws-amplify/backend-cli": "^1.4.12",
+    "aws-cdk": "^2.1000.2",
+    "aws-cdk-lib": "^2.180.0",
+    "constructs": "^10.4.2",
+    "esbuild": "^0.25.1",
+    "gh-pages": "^6.3.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
   }
 }
