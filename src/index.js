@@ -1,15 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom'; // Use HashRouter for GitHub Pages compatibility
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// For GitHub Pages
+const basename = window.location.hostname.includes('github.io') ? '/GR-Portfolio' : '/';
 
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <HashRouter>
+    <Router basename={basename}>
       <App />
-    </HashRouter>
-  </React.StrictMode>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
