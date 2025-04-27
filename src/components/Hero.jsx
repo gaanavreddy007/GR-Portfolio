@@ -29,7 +29,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="hero-image">
-          <div className="shape"></div>
+          <img src="/profile.jpg" alt="Gaanavaditya Reddy" className="hero-photo" />
         </div>
       </div>
       <style jsx>{`
@@ -100,32 +100,30 @@ const Hero = () => {
           width: 40%;
           display: flex;
           justify-content: center;
+          align-items: center;
+          min-height: 300px;
         }
         
-        .shape {
-          width: 300px;
-          height: 300px;
-          background: linear-gradient(45deg, var(--primary), var(--secondary));
-          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-          animation: morphShape 10s infinite ease-in-out;
+        .hero-photo {
+          width: 260px;
+          height: 260px;
+          object-fit: cover;
+          background-color: #fff;
+          padding: 8px;
+          border-radius: 50%;
+          box-shadow: 0 8px 32px 0 rgba(74, 108, 247, 0.25);
+          border: 6px solid var(--primary);
+          background: var(--background);
+          transition: box-shadow 0.3s, transform 0.3s;
+          display: block;
+          margin: 0 auto;
+          filter: drop-shadow(0 2px 8px rgba(74, 108, 247, 0.10));
+          object-position: 60% 0%;
         }
         
-        @keyframes morphShape {
-          0% {
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-          }
-          25% {
-            border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
-          }
-          50% {
-            border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
-          }
-          75% {
-            border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
-          }
-          100% {
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-          }
+        .hero-photo:hover {
+          box-shadow: 0 12px 40px 0 rgba(74, 108, 247, 0.35);
+          transform: scale(1.04);
         }
         
         @media (max-width: 768px) {
@@ -140,6 +138,7 @@ const Hero = () => {
           
           .hero-image {
             margin-bottom: 40px;
+            min-height: 180px;
           }
           
           .hero-title {
@@ -148,6 +147,14 @@ const Hero = () => {
           
           .hero-cta {
             justify-content: center;
+          }
+          
+          .hero-photo {
+            width: 160px;
+            height: 160px;
+            margin-bottom: 0;
+            padding: 4px;
+            object-position: 60% 0%;
           }
         }
       `}</style>

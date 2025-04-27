@@ -12,8 +12,6 @@ const Skills = () => {
     { name: 'CSS', icon: 'fab fa-css3-alt' },
     { name: 'JavaScript', icon: 'fab fa-js' },
     { name: 'MySQL', icon: 'fas fa-database' },
-    { name: 'Arduino', icon: 'fas fa-microchip' },
-    { name: 'Raspberry Pi', icon: 'fas fa-server' },
     { name: 'Pandas', icon: 'fas fa-table' },
     { name: 'NumPy', icon: 'fas fa-calculator' },
     { name: 'Seaborn', icon: 'fas fa-chart-bar' },

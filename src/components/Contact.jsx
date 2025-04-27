@@ -160,11 +160,16 @@ const Contact = () => {
         .contact-container {
           display: flex;
           gap: 50px;
+          align-items: stretch;
         }
         
         .contact-info, .contact-form {
           width: 50%;
           opacity: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-height: 100%;
         }
         
         .contact-info {
@@ -172,7 +177,7 @@ const Contact = () => {
           padding: 40px;
           border-radius: 15px;
           color: white;
-          height: fit-content;
+          box-shadow: var(--shadow);
         }
         
         .contact-info h3 {
@@ -232,6 +237,10 @@ const Contact = () => {
           padding: 40px;
           border-radius: 15px;
           box-shadow: var(--shadow);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-height: 100%;
         }
         
         .dark-theme .contact-form {
@@ -285,10 +294,12 @@ const Contact = () => {
         @media (max-width: 768px) {
           .contact-container {
             flex-direction: column;
+            align-items: stretch;
           }
           
           .contact-info, .contact-form {
             width: 100%;
+            min-height: unset;
           }
         }
       `}</style>
